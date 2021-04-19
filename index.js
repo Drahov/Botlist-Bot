@@ -34,6 +34,7 @@ Client.on('message', async msg => {
     .addField('Başvuran Kişi','<@!' + msg.author.id + '>')
     .addField('Client Id', appid)
     .addField('Botu Ekle',`[0 Perm](${link})`)
+    .setColor('RANDOM')
     ch.send(embed)//Oluşturduğumuz embed mesajı log channela gönderme
     }
   }

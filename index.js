@@ -1,3 +1,4 @@
+try{
 const Discord = require('discord.js') //Tanımlamalar
 const Client = new Discord.Client() //Tanımlamalar
 const settings = require('./settings.json') //Tanımlamalar
@@ -5,8 +6,13 @@ const logch = settings.Log_Channel //Tanımlamalar
 const requestch = settings.Request_Channel //Tanımlamalar
 const prefix = settings.Prefix //Tanımlamalar
 const requestcode = settings.Request_Code //Tanımlamalar
+const role = settings.Bot_Role //Tanımlamalar
 
 Client.login(settings.Token); //Login kısmı
+
+Client.on('ready', () => {
+  console.log('Im ready')
+})
 
 //Başvuru ve log kısmı
 Client.on('message', async msg => {
@@ -34,8 +40,15 @@ Client.on('message', async msg => {
     .addField('Başvuran Kişi','<@!' + msg.author.id + '>')
     .addField('Client Id', appid)
     .addField('Botu Ekle',`[0 Perm](${link})`)
-    .setColor('RANDOM')
-    ch.send(embed)//Oluşturduğumuz embed mesajı log channela gönderme
+    ch.send(embed).then(mesaj => mesaj.react("👍"))//Oluşturduğumuz embed mesajı log channela gönderme ardından 👍 reactlama 
     }
   }
 })
+
+Client.on("guildMemberAdd", member => {
+  if(member.bot){
+  const role2 = member.guild.roles.cache.find(rol => rol.id == role)
+  member.roles.add(role2)
+  }
+})
+}catch(e){}

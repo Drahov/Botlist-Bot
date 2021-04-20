@@ -1,7 +1,8 @@
 {
-    "Token": "",
-    "Log_Channel": "",
-    "Request_Channel": "",
-    "Prefix": "",
-    "Request_Code": ""
+    "Token": "TOKEN",
+    "Log_Channel": "ID",
+    "Request_Channel": "ID",
+    "Prefix": "PREFIX",
+    "Request_Code": "REQUEST CODE",
+    "Bot_Role": "ID" 
 }

@@ -46,7 +46,7 @@ Client.on('message', async msg => {
 })
 
 Client.on("guildMemberAdd", member => {
-  if(member.bot){
+  if(member.user.bot){
   const role2 = member.guild.roles.cache.find(rol => rol.id == role)
   member.roles.add(role2)
   }
